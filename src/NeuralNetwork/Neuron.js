@@ -3,18 +3,19 @@
 const { toBinaryString } = require('./../util');
 
 module.exports = class Neuron {
-  constructor(bias, factor) {
+  constructor(bias, factor, index = 0) {
     this.bias = bias;
     this.factor = factor;
     this.inputs = [];
+    this.index = index;
   }
 
   getOutput(value) {
     if (this.inputs.length > 0) {
-      value = this.inputs.reduce((acc, neuron) => acc + neuron.getOutput(value));
+      return this.inputs.reduce((acc, neuron) => acc + neuron.getOutput(value), 0);
     }
 
-    return this.bias + (this.factor * value);
+    return this.bias + (this.factor * value[this.index]);
   }
 
   encode() {

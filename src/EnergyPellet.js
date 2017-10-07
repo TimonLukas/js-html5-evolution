@@ -17,7 +17,7 @@ const settings = {
   },
 };
 
-module.exports = class Asteroid {
+module.exports = class EnergyPellet {
   constructor(width, height) {
     this.sprite = sprite[Math.floor(Math.random() * sprite.length)];
     this.angle = Math.random() * 360;

@@ -10,7 +10,7 @@ module.exports = class Perceptron {
     this.input = input;
     this.hidden = hidden;
     this.output = output;
-    this.binary = true;
+    this.binary = binary;
 
     hidden.map((layer) => { // eslint-disable-line
       layer.setInput(input);
@@ -24,10 +24,10 @@ module.exports = class Perceptron {
 
   activate(value) {
     if (this.binary) {
-      return this.output.neurons.reduce((acc, neuron) => acc ^ neuron.getOutput(value) > 0, false);
+      return this.output.neurons.reduce((acc, neuron) => acc + neuron.getOutput(value), 0) > 0;
     }
 
-    return this.output.neurons.reduce((acc, neuron) => acc + neuron.getOutput(value));
+    return this.output.neurons.reduce((acc, neuron) => acc + neuron.getOutput(value), 0);
   }
 
   encode() {

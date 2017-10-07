@@ -12,6 +12,7 @@ module.exports = class Canvas {
     this.canvas = element;
     this.context = element.getContext('2d');
     this.objects = [];
+    this.ships = [];
   }
 
   updateSize() {
@@ -29,6 +30,14 @@ module.exports = class Canvas {
     this.context.fillRect(0, this.canvas.height, this.canvas.width, -settings.border.size);
 
     this.objects = this.objects.map((object) => {
+      object.render(this.context);
+      if (!object.delete) {
+        return object;
+      }
+      return null;
+    }).filter(object => object !== null);
+
+    this.ships = this.ships.map((object) => {
       object.render(this.context);
       if (!object.delete) {
         return object;

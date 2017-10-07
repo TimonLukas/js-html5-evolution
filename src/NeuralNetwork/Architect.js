@@ -50,22 +50,24 @@ const createPerceptronFromGeneStrand = (strand, binary = true) => {
   );
 };
 
-const createRandomPerceptron = (binary) => {
+const createRandomPerceptron = (binary, inputs) => {
   const generateRandomNumber = () => Math.floor((Math.random() * 128) - 64);
 
-  const createRandomNeuron = () => {
+  const createRandomNeuron = (index) => {
     const bias = generateRandomNumber();
     const factor = generateRandomNumber();
 
-    return new Neuron(bias, factor);
+    return new Neuron(bias, factor, index);
   };
 
-  const createRandomLayer = () => new Layer([...Array(Math.ceil(Math.random() * 16))].map(createRandomNeuron));
+  const createRandomLayer = (numberOfInputNeurons = Math.ceil(Math.random() * 16)) =>
+    new Layer([...Array(numberOfInputNeurons)].map((value, index) => createRandomNeuron(index)));
 
   return new Perceptron(
-    createRandomLayer(),
+    createRandomLayer(inputs),
     [...Array(Math.ceil(Math.random() * 4))].map(createRandomLayer),
     createRandomLayer(),
+    binary,
   );
 };
 

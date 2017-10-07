@@ -12,7 +12,19 @@ const toBinaryString = number => number.toString(2);
  */
 const fromBinaryString = string => parseInt(string, 2);
 
+const mutate = string => string.split('').map((letter) => {
+  if (letter === '0' && Math.random() < 0.01) {
+    return '1';
+  }
+  if (letter === '1' && Math.random() < 0.01) {
+    return '0';
+  }
+
+  return letter;
+}).join('');
+
 module.exports = {
   toBinaryString,
   fromBinaryString,
+  mutate,
 };
