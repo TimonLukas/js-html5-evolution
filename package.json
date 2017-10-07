@@ -1,0 +1,25 @@
+{
+  "name": "js-html5-evolution",
+  "version": "1.0.0",
+  "description": "A project which seeks to recreate an evolutionary process using neural networks",
+  "main": "app.js",
+  "repository": "https://github.com/TimonLukas/js-html5-evolution.git",
+  "author": "Timon Lukas <timon.lukas3@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "eslint": "^4.8.0",
+    "express": "^4.16.1",
+    "laravel-mix": "^1.4.5"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-plugin-import": "^2.7.0"
+  },
+  "scripts": {
+    "dev": "SET NODE_ENV=development && node node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "SET NODE_ENV=development && node node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "SET NODE_ENV=development && node webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "SET NODE_ENV=production && node node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  }
+}
